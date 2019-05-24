@@ -1,0 +1,9 @@
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\TDESEncrypter\bin\Debug\netstandard2.0\TDESEncrypt.deps.json
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\TDESEncrypter\bin\Debug\netstandard2.0\TDESEncrypt.dll
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\TDESEncrypter\bin\Debug\netstandard2.0\TDESEncrypt.pdb
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\TDESEncrypter\obj\Debug\netstandard2.0\TDESEncrypt.csprojAssemblyReference.cache
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\TDESEncrypter\obj\Debug\netstandard2.0\TDESEncrypt.csproj.CoreCompileInputs.cache
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\TDESEncrypter\obj\Debug\netstandard2.0\TDESEncrypt.AssemblyInfoInputs.cache
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\TDESEncrypter\obj\Debug\netstandard2.0\TDESEncrypt.AssemblyInfo.cs
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\TDESEncrypter\obj\Debug\netstandard2.0\TDESEncrypt.dll
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\TDESEncrypter\obj\Debug\netstandard2.0\TDESEncrypt.pdb
