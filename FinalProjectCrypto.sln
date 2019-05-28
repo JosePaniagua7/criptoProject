@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RSAEncrypter", "RSAEncrypter\RSAEncrypter.csproj", "{ED38425F-7B2E-4400-846E-9BAB34D9CAA7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataHandlers", "DataHandlers\DataHandlers.csproj", "{403BA5AF-B2A9-400D-BBD9-3F97AE02E7DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{ED38425F-7B2E-4400-846E-9BAB34D9CAA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED38425F-7B2E-4400-846E-9BAB34D9CAA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED38425F-7B2E-4400-846E-9BAB34D9CAA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{403BA5AF-B2A9-400D-BBD9-3F97AE02E7DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{403BA5AF-B2A9-400D-BBD9-3F97AE02E7DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{403BA5AF-B2A9-400D-BBD9-3F97AE02E7DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{403BA5AF-B2A9-400D-BBD9-3F97AE02E7DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,6 +53,7 @@ Global
 		{036333C8-8047-45C6-B449-EE71C72A4832} = {ECC0C3B7-513E-4BAB-BC1C-912F0EC2482A}
 		{09A78B72-00EF-4D3B-B16D-F5499285DAD9} = {A146F66C-A938-4CA8-BFEB-ED331E887D77}
 		{ED38425F-7B2E-4400-846E-9BAB34D9CAA7} = {ECC0C3B7-513E-4BAB-BC1C-912F0EC2482A}
+		{403BA5AF-B2A9-400D-BBD9-3F97AE02E7DC} = {CA7C7DC1-A483-4DB2-95E5-616267E5449E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F2F0BF0A-2DE5-44CD-A4AB-1347D46011BD}
