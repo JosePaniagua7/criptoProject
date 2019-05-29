@@ -47,7 +47,7 @@ namespace ConsoleApp1
 
             //------------------------Here Starts XML writer------------------------------------------------
             // Create a new file in C:\\ dir  
-            XmlTextWriter textWriter = new XmlTextWriter("C:\\Users\\jose.paniagua\\Desktop\\myFile.xml", null);
+            /*XmlTextWriter textWriter = new XmlTextWriter("C:\\Users\\jose.paniagua\\Desktop\\myFile.xml", null);
             // Opens the document  
             textWriter.WriteStartDocument();
             // Write comments  
@@ -75,10 +75,27 @@ namespace ConsoleApp1
             // Ends the document.  
             textWriter.WriteEndDocument();
             // close writer  
-            textWriter.Close();
+            textWriter.Close();*/
+                        
+            /*XmlDocument doc = new XmlDocument();
+            doc.Load("C:\\Users\\jose.paniagua\\Desktop\\myFile.xml");
+            XmlNode node = doc.DocumentElement.SelectSingleNode("/Student");
+            Console.WriteLine("The node is: "+ node.InnerText);*/
 
+        }
 
+        public static byte[] HexaStringToByteArray(String hex)
+        {
+            int NumberChars = hex.Length;
+            byte[] bytes = new byte[NumberChars / 2];
+            for (int i = 0; i < NumberChars; i += 2)
+                bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
+            return bytes;
+        }
 
+        public static string ByteArrayToHexaString(byte[] ba)
+        {
+            return BitConverter.ToString(ba).Replace("-", "");
         }
 
     }
