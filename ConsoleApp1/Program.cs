@@ -49,10 +49,8 @@ namespace ConsoleApp1
             // Create a new file in C:\\ dir  
             /*XmlTextWriter textWriter = new XmlTextWriter("C:\\Users\\jose.paniagua\\Desktop\\myFile.xml", null);
             // Opens the document  
-            textWriter.WriteStartDocument();
-            // Write comments  
-            textWriter.WriteComment("Tengo Miedo!");
-            textWriter.WriteComment("myXmlFile.xml in root dir");
+            textWriter.WriteStartDocument();            
+            
             // Write first element  
             textWriter.WriteStartElement("Student");
             textWriter.WriteStartElement("r", "RECORD", "urn:record");
@@ -64,7 +62,7 @@ namespace ConsoleApp1
             textWriter.WriteStartElement("Address", "");
             textWriter.WriteString("Colony");
             textWriter.WriteEndElement();
-            // WriteChars  
+            // Write  
             byte[] ch = new byte[3];
             ch[0] = 11;
             ch[1] = 40;
@@ -76,12 +74,27 @@ namespace ConsoleApp1
             textWriter.WriteEndDocument();
             // close writer  
             textWriter.Close();*/
-                        
+
+
+            //------------------------Here Starts XML reader------------------------------------------------
             /*XmlDocument doc = new XmlDocument();
             doc.Load("C:\\Users\\jose.paniagua\\Desktop\\myFile.xml");
             XmlNode node = doc.DocumentElement.SelectSingleNode("/Student");
             Console.WriteLine("The node is: "+ node.InnerText);*/
 
+            byte[] ch = new byte[3];
+            ch[0] = 11;
+            ch[1] = 40;
+            ch[2] = 32;
+
+            String s = ByteArrayToHexaString(ch);
+            Console.WriteLine("The string is: " + s);
+
+            byte [] newByte = HexaStringToByteArray(s);
+            for(int i = 0; i < newByte.Length; i++)
+            {
+                Console.WriteLine("i: "+ newByte[i]);
+            }
         }
 
         public static byte[] HexaStringToByteArray(String hex)

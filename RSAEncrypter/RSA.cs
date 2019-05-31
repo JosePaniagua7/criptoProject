@@ -75,15 +75,5 @@ namespace RSAEncrypter
 
         }
 
-        public RSAParameters getKeyInformationTrue()
-        {
-            return this.CrytpServiceProvider.ExportParameters(true);
-        }
-
-        public RSAParameters getKeyInformationFasle()
-        {
-            return this.CrytpServiceProvider.ExportParameters(false);
-        }
-
     }
 }
