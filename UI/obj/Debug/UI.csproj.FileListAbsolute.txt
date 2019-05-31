@@ -1,0 +1,12 @@
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\bin\Debug\UI.exe.config
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\bin\Debug\UI.exe
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\bin\Debug\UI.pdb
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\obj\Debug\UI.InitialScreen.resources
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\obj\Debug\UI.MasterForm.resources
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\obj\Debug\UI.Properties.Resources.resources
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\obj\Debug\UI.SlaveForm.resources
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\obj\Debug\UI.csproj.GenerateResource.cache
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\obj\Debug\UI.csproj.CoreCompileInputs.cache
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\obj\Debug\UI.exe
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\obj\Debug\UI.pdb
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\obj\Debug\UI.csprojAssemblyReference.cache
