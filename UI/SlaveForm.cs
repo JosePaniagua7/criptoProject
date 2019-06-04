@@ -13,9 +13,11 @@ namespace UI
 {
     public partial class SlaveForm : Form
     {
+        OpenFileDialog fileBrowser;
         public SlaveForm()
         {
             InitializeComponent();
+            fileBrowser = new OpenFileDialog();
         }
 
         private void SlaveForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -39,6 +41,11 @@ namespace UI
                 MessageBox.Show("The path is: " + folderBrowser.FileName);
                 // ...
             }
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

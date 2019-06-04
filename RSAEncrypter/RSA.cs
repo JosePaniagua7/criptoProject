@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace RSAEncrypter
 {
@@ -37,11 +38,17 @@ namespace RSAEncrypter
         {
             return this.CrytpServiceProvider.ToXmlString(false);            
         }
+        public string getPrivateKey()
+        {
+            return this.CrytpServiceProvider.ToXmlString(true);
+        }
 
         public void setPublicKey(String publicKey)
         {
             this.CrytpServiceProvider.FromXmlString(publicKey);
         }
+
+
 
     }
 }

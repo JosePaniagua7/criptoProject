@@ -100,6 +100,7 @@
             this.button3.TabIndex = 37;
             this.button3.Text = "Importar clave TDES de fichero";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // label4
             // 

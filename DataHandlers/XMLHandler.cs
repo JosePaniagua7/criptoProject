@@ -40,5 +40,28 @@ namespace DataHandlers
             // close writer  
             xmlTextWritter.Close();            
         }
+
+        public string readNode(string route,string nodeName)
+        {            
+            this.xmlDocumentReader.Load(route);
+            String nodeValue="";
+
+            XmlNode node = xmlDocumentReader.DocumentElement.SelectSingleNode("/" + nodeName);
+            if (node != null) {
+                nodeValue = node.InnerText;
+            }                        
+            return nodeValue;
+        }
+
+        public string readRsaPublicKey(string route)
+        {
+            string publicRsaKey = "";
+            this.xmlDocumentReader.Load(route);
+            XmlNodeList elemList = this.xmlDocumentReader.GetElementsByTagName("clavepublica");
+            if (elemList.Count > 0){
+                publicRsaKey = elemList[0].InnerXml;
+            }
+            return publicRsaKey;
+        }
     }
 }

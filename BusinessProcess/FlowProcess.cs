@@ -13,26 +13,41 @@ namespace BusinessProcess
         private RSA RSAEnrcypter;
         private TDES TDESEncrypter;
         private XMLHandler fileHandler;
+        
+        
         public FlowProcess()
         {
             this.RSAEnrcypter = new RSA();
             this.TDESEncrypter = new TDES();
-            this.fileHandler = new XMLHandler(); 
+            this.fileHandler = new XMLHandler();
+        
         }
-        public void exportPublicKeyToXml()
+        public void exportPublicKeyToXml(string route)
         {
 
         }
 
         public string [] generateRSAKeys()
         {
-            string[] keys = new string[2];
-            keys[0] = "Prueba 1";
-            keys[1] = "Prueba 2";
+            string[] keys = new string[2];            
+            keys[0] = this.RSAEnrcypter.getPrivateKey();
+            keys[1] = this.RSAEnrcypter.getPublicKey();
             return keys;
         }
 
-        public void importTdesKeyFromXml()
+        public string importRsaPublicKey(string route)
+        {            
+            string publicKey=fileHandler.readRsaPublicKey(route);
+            //After reading, lets set the key to the rsa
+            this.RSAEnrcypter.setPublicKey(publicKey);
+            return publicKey;
+        }
+        
+        public byte[] generateTdesKeys()
+        {                      
+            return this.TDESEncrypter.generateKeys();
+        }
+        public void importTdesKeyFromXml(String route)
         {
 
         }
@@ -43,6 +58,10 @@ namespace BusinessProcess
             return keys;
         }
 
+        public void setTdesKeys()
+        {
+
+        }
         public string encryptText()
         {
             string encryptedMessage = "";

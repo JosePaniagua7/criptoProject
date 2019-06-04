@@ -10,3 +10,12 @@ C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\obj\Debug\UI.csproj.Co
 C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\obj\Debug\UI.exe
 C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\obj\Debug\UI.pdb
 C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\obj\Debug\UI.csprojAssemblyReference.cache
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\bin\Debug\BusinessProcess.dll
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\bin\Debug\RSAEncrypter.dll
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\bin\Debug\TDESEncrypter.dll
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\bin\Debug\DataHandlers.dll
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\bin\Debug\BusinessProcess.pdb
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\bin\Debug\RSAEncrypter.pdb
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\bin\Debug\TDESEncrypter.pdb
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\bin\Debug\DataHandlers.pdb
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\UI\obj\Debug\UI.csproj.CopyComplete

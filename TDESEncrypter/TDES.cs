@@ -8,73 +8,58 @@ namespace TDESEncrypter
 {
     public class TDES
     {
-
-        private byte[] joinedKeys;
+        private byte[] keys;        
         private byte[] initializationVector;
         private TripleDESCryptoServiceProvider ecrypterServiceProvider;
-        //When the client creats a TDESEncrypter objetct, it needs to concat the three different keys, 
-        //so that, they cen be used in the TripleDESCryptoServiceProvider, also, we need to 
-        //initialize the initializationVector and create a TripleDESCryptoServiceProvider
-        /*public TDES(String key1, String key2, String key3, String initializationString)
+        private Random rnd;
+        
+        public TDES()
         {
-            this.joinedKeys = new byte[24];
-            concatKeys(key1, key2, key3);
-            initializationVector = new byte[8];
-            stringToInitializationVector(initializationString);
-            this.ecrypterServiceProvider = new TripleDESCryptoServiceProvider();
-        }*/        
-        public string [] generateKeys()
+            this.rnd = new Random();
+        }
+        public byte[] generateKeys()
         {
+            for (int i = 0; i < this.keys.Length; i++)
+            {
+                this.keys[i] = (byte)rnd.Next(128);
+            }
+            return this.keys;
+        }
 
-            string[] keys = new string[3];
+        public byte[] generateInitializationVector()
+        {
+            for (int i = 0; i < this.initializationVector.Length; i++)
+            {
+                this.initializationVector[i] = (byte)rnd.Next(128);
+            }
+            return this.initializationVector;
+        }
+
+        public byte[][] getKeys()
+        {
+            byte[][] keys = new byte[3][];
+            keys[0] = this.keys.Take(8).ToArray();
+            keys[1] = this.keys.Skip(8).Take(8).ToArray();
+            keys[2] = this.keys.Skip(16).Take(8).ToArray();
+            for (int i = 0; i < keys.Length; i++)
+            {
+                for(int j = 0; j < keys[i].Length; j++)
+                {
+                    Console.Write(keys[i][j]+ ",");
+                }
+                Console.WriteLine();
+            }
             return keys;
         }
-
-        private void concatKeys(String key1, String key2, String key3)
+        
+        public void setKeys(byte[] key)
         {
-            zeroExtend(this.joinedKeys);
 
-            byte[] key1AsByteArray = convertStringToByteArray(key1);
-            byte[] key2AsByteArray = convertStringToByteArray(key2);
-            byte[] key3AsByteArray = convertStringToByteArray(key3);
-
-            if (key1AsByteArray.Length > 8)
-            {
-                key1AsByteArray = key1AsByteArray.Take(8).ToArray();
-            }
-
-            if (key2AsByteArray.Length > 8)
-            {
-                key2AsByteArray = key2AsByteArray.Take(8).ToArray();
-            }
-
-            if (key3AsByteArray.Length > 8)
-            {
-                key3AsByteArray = key3AsByteArray.Take(8).ToArray();
-            }
-
-            key1AsByteArray.CopyTo(joinedKeys, 0);
-            key2AsByteArray.CopyTo(joinedKeys, key1AsByteArray.Length);
-            key3AsByteArray.CopyTo(joinedKeys, (key1AsByteArray.Length + key2AsByteArray.Length));
         }
 
-        public void stringToInitializationVector(String initializationString)
+        public byte[] getInitializationVector()
         {
-            zeroExtend(this.initializationVector);
-            byte[] initializationStringAsByteArray = convertStringToByteArray(initializationString);
-            if (initializationStringAsByteArray.Length <= 8)
-            {
-                initializationStringAsByteArray.CopyTo(this.initializationVector, 0);
-            }
-            else
-            {
-                this.initializationVector = initializationStringAsByteArray.Take(8).ToArray();
-            }
-        }
-
-        byte[] convertStringToByteArray(String key)
-        {
-            return new ASCIIEncoding().GetBytes(key);
+            return this.initializationVector;
         }
 
         public byte[] Encrypt(string Data)
@@ -85,7 +70,7 @@ namespace TDESEncrypter
                 MemoryStream memoryStream = new MemoryStream();
                 // Create a CryptoStream using the MemoryStream 
                 // and the passed key and initialization vector (IV).
-                CryptoStream criptoStream = new CryptoStream(memoryStream, this.ecrypterServiceProvider.CreateEncryptor(this.joinedKeys, this.initializationVector),
+                CryptoStream criptoStream = new CryptoStream(memoryStream, this.ecrypterServiceProvider.CreateEncryptor(this.keys, this.initializationVector),
                     CryptoStreamMode.Write);
 
                 // Convert the passed string to a byte array.
@@ -124,7 +109,7 @@ namespace TDESEncrypter
                 // Create a CryptoStream using the MemoryStream 
                 // and the passed key and initialization vector (IV).
                 CryptoStream cryptoStream = new CryptoStream(memoryStream,
-                    this.ecrypterServiceProvider.CreateDecryptor(this.joinedKeys, this.initializationVector), CryptoStreamMode.Read);
+                    this.ecrypterServiceProvider.CreateDecryptor(this.keys, this.initializationVector), CryptoStreamMode.Read);
 
                 // Create buffer to hold the decrypted data.
                 byte[] decryptedData = new byte[Data.Length];
@@ -142,16 +127,5 @@ namespace TDESEncrypter
                 return null;
             }
         }
-
-        private void zeroExtend(byte[] array)
-        {
-            for (int i = 0; i < array.Length; i++)
-            {
-                array[i] = 0;
-            }
-        }
-
-
-
     }
 }
