@@ -43,9 +43,15 @@ namespace BusinessProcess
             return publicKey;
         }
         
-        public byte[] generateTdesKeys()
-        {                      
-            return this.TDESEncrypter.generateKeys();
+        public void generateTdesKeys()
+        {
+            this.TDESEncrypter.generateKeys();
+            this.TDESEncrypter.generateInitializationVector();
+        }
+        public string getTdesKey()
+        {
+            byte[] key = this.TDESEncrypter.getKey();
+            return ByteArrayToHexa(key);
         }
         public void importTdesKeyFromXml(String route)
         {
@@ -71,6 +77,20 @@ namespace BusinessProcess
         public void exportEncryptedTextToXml(string route)
         {
             
+        }
+
+        public string ByteArrayToHexa(byte[] data)
+        {
+            return BitConverter.ToString(data).Replace("-", "");
+        }
+
+        public byte[] HexaToByteArray(String hex)
+        {
+            int NumberChars = hex.Length;
+            byte[] bytes = new byte[NumberChars / 2];
+            for (int i = 0; i < NumberChars; i += 2)
+                bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
+            return bytes;
         }
     }
 }

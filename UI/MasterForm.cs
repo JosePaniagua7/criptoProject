@@ -52,6 +52,8 @@ namespace UI
         private void Button3_Click(object sender, EventArgs e)
         {
             this.userWorkFlow.generateTdesKeys();
+            string tdesKey=this.userWorkFlow.getTdesKey();
+            this.LabelTdesKey.Text = tdesKey;
         }
     }
 }

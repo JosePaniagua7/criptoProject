@@ -16,6 +16,8 @@ namespace TDESEncrypter
         public TDES()
         {
             this.rnd = new Random();
+            this.keys = new byte[24];
+            this.initializationVector = new byte[8];
         }
         public byte[] generateKeys()
         {
@@ -23,6 +25,10 @@ namespace TDESEncrypter
             {
                 this.keys[i] = (byte)rnd.Next(128);
             }
+            return this.keys;
+        }
+        public byte [] getKey()
+        {
             return this.keys;
         }
 
@@ -50,6 +56,17 @@ namespace TDESEncrypter
                 Console.WriteLine();
             }
             return keys;
+        }
+        public string [] getKeysAsHexa()
+        {
+            string[] keysAsHexa = new string[3][];
+            byte[][] keysAsByteArray = this.getKeys();
+            for(int i=0;i< keysAsByteArray.Length; i++)
+            {
+
+            }
+
+            return keysAsHexa;
         }
         
         public void setKeys(byte[] key)
