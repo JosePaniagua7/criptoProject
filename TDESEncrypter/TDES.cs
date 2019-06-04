@@ -15,15 +15,20 @@ namespace TDESEncrypter
         //When the client creats a TDESEncrypter objetct, it needs to concat the three different keys, 
         //so that, they cen be used in the TripleDESCryptoServiceProvider, also, we need to 
         //initialize the initializationVector and create a TripleDESCryptoServiceProvider
-        public TDES(String key1, String key2, String key3, String initializationString)
+        /*public TDES(String key1, String key2, String key3, String initializationString)
         {
             this.joinedKeys = new byte[24];
             concatKeys(key1, key2, key3);
             initializationVector = new byte[8];
             stringToInitializationVector(initializationString);
             this.ecrypterServiceProvider = new TripleDESCryptoServiceProvider();
-        }
+        }*/        
+        public string [] generateKeys()
+        {
 
+            string[] keys = new string[3];
+            return keys;
+        }
 
         private void concatKeys(String key1, String key2, String key3)
         {
