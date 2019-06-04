@@ -207,25 +207,6 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
-      },
-      "RSAEncrypter/1.0.0": {
-        "type": "project",
-        "compile": {
-          "bin/placeholder/RSAEncrypter.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/RSAEncrypter.dll": {}
-        }
-      },
-      "TDESEncrypt/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/TDESEncrypt.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/TDESEncrypt.dll": {}
-        }
       }
     }
   },
@@ -699,23 +680,11 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
-    },
-    "RSAEncrypter/1.0.0": {
-      "type": "project",
-      "path": "../RSAEncrypter/RSAEncrypter.csproj",
-      "msbuildProject": "../RSAEncrypter/RSAEncrypter.csproj"
-    },
-    "TDESEncrypt/1.0.0": {
-      "type": "project",
-      "path": "../TDESEncrypter/TDESEncrypt.csproj",
-      "msbuildProject": "../TDESEncrypter/TDESEncrypt.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
-      "Microsoft.NETCore.App >= 2.1.0",
-      "RSAEncrypter >= 1.0.0",
-      "TDESEncrypt >= 1.0.0"
+      "Microsoft.NETCore.App >= 2.1.0"
     ]
   },
   "packageFolders": {
@@ -747,14 +716,7 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {
-            "C:\\Users\\jose.paniagua\\source\\repos\\FinalProjectCrypto\\RSAEncrypter\\RSAEncrypter.csproj": {
-              "projectPath": "C:\\Users\\jose.paniagua\\source\\repos\\FinalProjectCrypto\\RSAEncrypter\\RSAEncrypter.csproj"
-            },
-            "C:\\Users\\jose.paniagua\\source\\repos\\FinalProjectCrypto\\TDESEncrypter\\TDESEncrypt.csproj": {
-              "projectPath": "C:\\Users\\jose.paniagua\\source\\repos\\FinalProjectCrypto\\TDESEncrypter\\TDESEncrypt.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

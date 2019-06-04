@@ -5,9 +5,4 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\RSAEncrypter\RSAEncrypter.csproj" />
-    <ProjectReference Include="..\TDESEncrypter\TDESEncrypt.csproj" />
-  </ItemGroup>
-
 </Project>

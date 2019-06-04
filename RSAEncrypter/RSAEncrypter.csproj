@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ED38425F-7B2E-4400-846E-9BAB34D9CAA7}</ProjectGuid>
+    <ProjectGuid>{0743F1FC-1608-4665-8A4D-F6276AC175C6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RSAEncrypter</RootNamespace>

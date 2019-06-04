@@ -1,9 +1,7 @@
-﻿using RSAEncrypter;
-using System;
-using System.Linq;
+﻿using System;
+using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
-using TDESEncrypter;
 
 namespace ConsoleApp1
 {
@@ -82,7 +80,7 @@ namespace ConsoleApp1
             XmlNode node = doc.DocumentElement.SelectSingleNode("/Student");
             Console.WriteLine("The node is: "+ node.InnerText);*/
 
-            byte[] ch = new byte[3];
+            /*byte[] ch = new byte[3];
             ch[0] = 11;
             ch[1] = 40;
             ch[2] = 32;
@@ -94,6 +92,36 @@ namespace ConsoleApp1
             for(int i = 0; i < newByte.Length; i++)
             {
                 Console.WriteLine("i: "+ newByte[i]);
+            }*/
+
+            try
+            {
+                RSACryptoServiceProvider rsaServer = new RSACryptoServiceProvider(512);
+                string publicKeyXml = rsaServer.ToXmlString(false);
+
+                //Create the XmlDocument.
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(publicKeyXml);
+
+
+                //Display the document element.
+                Console.WriteLine(doc.DocumentElement.OuterXml);
+
+                var rsaClient = new RSACryptoServiceProvider(512);
+                rsaClient.FromXmlString(publicKeyXml);
+
+                var data = Encoding.UTF8.GetBytes("Data To Be Encrypted");
+
+                var encryptedData = rsaClient.Encrypt(data, false);
+                var decryptedData = rsaServer.Decrypt(encryptedData, false);
+
+                Console.WriteLine(Encoding.UTF8.GetString(decryptedData));
+
+                Console.WriteLine("OK");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("The problem is: " + ex.Message);
             }
         }
 
@@ -110,6 +138,5 @@ namespace ConsoleApp1
         {
             return BitConverter.ToString(ba).Replace("-", "");
         }
-
     }
 }

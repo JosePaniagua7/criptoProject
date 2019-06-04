@@ -1,6 +1,0 @@
-C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\RSAEncrypter\bin\Debug\RSAEncrypter.dll
-C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\RSAEncrypter\bin\Debug\RSAEncrypter.pdb
-C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\RSAEncrypter\obj\Debug\RSAEncrypter.csprojAssemblyReference.cache
-C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\RSAEncrypter\obj\Debug\RSAEncrypter.csproj.CoreCompileInputs.cache
-C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\RSAEncrypter\obj\Debug\RSAEncrypter.dll
-C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\RSAEncrypter\obj\Debug\RSAEncrypter.pdb

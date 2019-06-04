@@ -22,7 +22,7 @@ namespace RSAEncrypter
             {
                 byte[] encryptedData;
                 //Create a new instance of RSACryptoServiceProvider.
-                using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
+                using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider(512))
                 {
 
                     //Import the RSA Key information. This only needs
@@ -52,7 +52,7 @@ namespace RSAEncrypter
             {
                 byte[] decryptedData;
                 //Create a new instance of RSACryptoServiceProvider.
-                using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
+                using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider(512))
                 {
                     //Import the RSA Key information. This needs
                     //to include the private key information.
@@ -73,6 +73,11 @@ namespace RSAEncrypter
                 return null;
             }
 
+        }
+
+        public string getPublicKey()
+        {            
+            return this.CrytpServiceProvider.ToXmlString(false);
         }
 
     }
