@@ -8,7 +8,7 @@ namespace TDESEncrypter
 {
     public class TDES
     {
-        private byte[] keys;        
+        private byte[] key;        
         private byte[] initializationVector;
         private TripleDESCryptoServiceProvider ecrypterServiceProvider;
         private Random rnd;
@@ -16,20 +16,47 @@ namespace TDESEncrypter
         public TDES()
         {
             this.rnd = new Random();
-            this.keys = new byte[24];
+            this.key = new byte[24];
             this.initializationVector = new byte[8];
         }
-        public byte[] generateKeys()
+        public byte[] generateKey()
         {
-            for (int i = 0; i < this.keys.Length; i++)
+            for (int i = 0; i < this.key.Length; i++)
             {
-                this.keys[i] = (byte)rnd.Next(128);
+                this.key[i] = (byte)rnd.Next(128);
             }
-            return this.keys;
+            return this.key;
         }
         public byte [] getKey()
         {
-            return this.keys;
+            return this.key;
+        }
+        public byte[] setKeys(byte[] key1, byte[] key2, byte[] key3)
+        {
+            //First, lets zero extend the Kee, just in case the 
+            //sum of the keys lenght gives less than 24
+            zeroExtend(this.key);
+            key1.CopyTo(this.key, 0);
+            key2.CopyTo(this.key, key1.Length);
+            key3.CopyTo(this.key, (key1.Length + key2.Length));
+            return this.key;
+        }
+
+        public byte[][] getKeys()
+        {
+            byte[][] keys = new byte[3][];
+            keys[0] = this.key.Take(8).ToArray();
+            keys[1] = this.key.Skip(8).Take(8).ToArray();
+            keys[2] = this.key.Skip(16).Take(8).ToArray();
+            for (int i = 0; i < keys.Length; i++)
+            {
+                for (int j = 0; j < keys[i].Length; j++)
+                {
+                    Console.Write(keys[i][j] + ",");
+                }
+                Console.WriteLine();
+            }
+            return keys;
         }
 
         public byte[] generateInitializationVector()
@@ -39,39 +66,6 @@ namespace TDESEncrypter
                 this.initializationVector[i] = (byte)rnd.Next(128);
             }
             return this.initializationVector;
-        }
-
-        public byte[][] getKeys()
-        {
-            byte[][] keys = new byte[3][];
-            keys[0] = this.keys.Take(8).ToArray();
-            keys[1] = this.keys.Skip(8).Take(8).ToArray();
-            keys[2] = this.keys.Skip(16).Take(8).ToArray();
-            for (int i = 0; i < keys.Length; i++)
-            {
-                for(int j = 0; j < keys[i].Length; j++)
-                {
-                    Console.Write(keys[i][j]+ ",");
-                }
-                Console.WriteLine();
-            }
-            return keys;
-        }
-        public string [] getKeysAsHexa()
-        {
-            string[] keysAsHexa = new string[3][];
-            byte[][] keysAsByteArray = this.getKeys();
-            for(int i=0;i< keysAsByteArray.Length; i++)
-            {
-
-            }
-
-            return keysAsHexa;
-        }
-        
-        public void setKeys(byte[] key)
-        {
-
         }
 
         public byte[] getInitializationVector()
@@ -87,7 +81,7 @@ namespace TDESEncrypter
                 MemoryStream memoryStream = new MemoryStream();
                 // Create a CryptoStream using the MemoryStream 
                 // and the passed key and initialization vector (IV).
-                CryptoStream criptoStream = new CryptoStream(memoryStream, this.ecrypterServiceProvider.CreateEncryptor(this.keys, this.initializationVector),
+                CryptoStream criptoStream = new CryptoStream(memoryStream, this.ecrypterServiceProvider.CreateEncryptor(this.key, this.initializationVector),
                     CryptoStreamMode.Write);
 
                 // Convert the passed string to a byte array.
@@ -116,7 +110,7 @@ namespace TDESEncrypter
             }
         }
 
-        public string Decrypt(byte[] Data)
+        public byte[] Decrypt(byte[] Data)
         {
             try
             {
@@ -126,7 +120,7 @@ namespace TDESEncrypter
                 // Create a CryptoStream using the MemoryStream 
                 // and the passed key and initialization vector (IV).
                 CryptoStream cryptoStream = new CryptoStream(memoryStream,
-                    this.ecrypterServiceProvider.CreateDecryptor(this.keys, this.initializationVector), CryptoStreamMode.Read);
+                    this.ecrypterServiceProvider.CreateDecryptor(this.key, this.initializationVector), CryptoStreamMode.Read);
 
                 // Create buffer to hold the decrypted data.
                 byte[] decryptedData = new byte[Data.Length];
@@ -134,14 +128,20 @@ namespace TDESEncrypter
                 // Read the decrypted data out of the crypto stream
                 // and place it into the temporary buffer.
                 cryptoStream.Read(decryptedData, 0, decryptedData.Length);
-
-                //Convert the buffer into a string and return it.
-                return new ASCIIEncoding().GetString(decryptedData);
+                return decryptedData;                
             }
             catch (CryptographicException e)
             {
                 Console.WriteLine("A Cryptographic error occurred: {0}", e.Message);
                 return null;
+            }
+        }
+
+        public void zeroExtend(byte [] arr)
+        {
+            for(int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = 0;
             }
         }
     }

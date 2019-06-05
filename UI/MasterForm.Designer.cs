@@ -44,17 +44,20 @@
             this.button1 = new System.Windows.Forms.Button();
             this.LabelPublicKeySlave = new System.Windows.Forms.Label();
             this.LabelTdesKey = new System.Windows.Forms.Label();
-            this.LabelEncryptedTdesKeys = new System.Windows.Forms.Label();
+            this.LabelTdes1Encrypted = new System.Windows.Forms.Label();
             this.LabelEncryptedText = new System.Windows.Forms.Label();
             this.LabelDecryptedText = new System.Windows.Forms.Label();
             this.TextBoxRsaPublicKey = new System.Windows.Forms.TextBox();
             this.TextBoxRsaPrivateKey = new System.Windows.Forms.TextBox();
+            this.LabelTdes2Encrypted = new System.Windows.Forms.Label();
+            this.LabelTdes3Encrypted = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(201, 505);
+            this.label8.Location = new System.Drawing.Point(201, 556);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 41;
@@ -62,17 +65,18 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(88, 493);
+            this.button6.Location = new System.Drawing.Point(88, 544);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(90, 37);
             this.button6.TabIndex = 40;
             this.button6.Text = "Desencriptar Texto";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(197, 442);
+            this.label7.Location = new System.Drawing.Point(197, 493);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(129, 13);
             this.label7.TabIndex = 39;
@@ -80,12 +84,13 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(85, 426);
+            this.button5.Location = new System.Drawing.Point(85, 477);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(93, 44);
             this.button5.TabIndex = 38;
             this.button5.Text = "Importar mensaje de xml";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // label6
             // 
@@ -104,6 +109,7 @@
             this.button4.TabIndex = 36;
             this.button4.Text = "Encriptar claves TDES ";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // label5
             // 
@@ -200,19 +206,19 @@
             this.LabelTdesKey.TabIndex = 45;
             this.LabelTdesKey.Text = "label9";
             // 
-            // LabelEncryptedTdesKeys
+            // LabelTdes1Encrypted
             // 
-            this.LabelEncryptedTdesKeys.AutoSize = true;
-            this.LabelEncryptedTdesKeys.Location = new System.Drawing.Point(313, 379);
-            this.LabelEncryptedTdesKeys.Name = "LabelEncryptedTdesKeys";
-            this.LabelEncryptedTdesKeys.Size = new System.Drawing.Size(35, 13);
-            this.LabelEncryptedTdesKeys.TabIndex = 46;
-            this.LabelEncryptedTdesKeys.Text = "label9";
+            this.LabelTdes1Encrypted.AutoSize = true;
+            this.LabelTdes1Encrypted.Location = new System.Drawing.Point(330, 354);
+            this.LabelTdes1Encrypted.Name = "LabelTdes1Encrypted";
+            this.LabelTdes1Encrypted.Size = new System.Drawing.Size(35, 13);
+            this.LabelTdes1Encrypted.TabIndex = 46;
+            this.LabelTdes1Encrypted.Text = "label9";
             // 
             // LabelEncryptedText
             // 
             this.LabelEncryptedText.AutoSize = true;
-            this.LabelEncryptedText.Location = new System.Drawing.Point(350, 441);
+            this.LabelEncryptedText.Location = new System.Drawing.Point(350, 492);
             this.LabelEncryptedText.Name = "LabelEncryptedText";
             this.LabelEncryptedText.Size = new System.Drawing.Size(35, 13);
             this.LabelEncryptedText.TabIndex = 47;
@@ -221,7 +227,7 @@
             // LabelDecryptedText
             // 
             this.LabelDecryptedText.AutoSize = true;
-            this.LabelDecryptedText.Location = new System.Drawing.Point(260, 506);
+            this.LabelDecryptedText.Location = new System.Drawing.Point(260, 557);
             this.LabelDecryptedText.Name = "LabelDecryptedText";
             this.LabelDecryptedText.Size = new System.Drawing.Size(35, 13);
             this.LabelDecryptedText.TabIndex = 48;
@@ -246,16 +252,47 @@
             this.TextBoxRsaPrivateKey.Size = new System.Drawing.Size(419, 62);
             this.TextBoxRsaPrivateKey.TabIndex = 50;
             // 
+            // LabelTdes2Encrypted
+            // 
+            this.LabelTdes2Encrypted.AutoSize = true;
+            this.LabelTdes2Encrypted.Location = new System.Drawing.Point(330, 381);
+            this.LabelTdes2Encrypted.Name = "LabelTdes2Encrypted";
+            this.LabelTdes2Encrypted.Size = new System.Drawing.Size(35, 13);
+            this.LabelTdes2Encrypted.TabIndex = 51;
+            this.LabelTdes2Encrypted.Text = "label9";
+            // 
+            // LabelTdes3Encrypted
+            // 
+            this.LabelTdes3Encrypted.AutoSize = true;
+            this.LabelTdes3Encrypted.Location = new System.Drawing.Point(329, 405);
+            this.LabelTdes3Encrypted.Name = "LabelTdes3Encrypted";
+            this.LabelTdes3Encrypted.Size = new System.Drawing.Size(35, 13);
+            this.LabelTdes3Encrypted.TabIndex = 52;
+            this.LabelTdes3Encrypted.Text = "label9";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(247, 430);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(533, 24);
+            this.button7.TabIndex = 53;
+            this.button7.Text = "Exportar Claves TDES a xml";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.Button7_Click);
+            // 
             // MasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(757, 537);
+            this.ClientSize = new System.Drawing.Size(860, 593);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.LabelTdes3Encrypted);
+            this.Controls.Add(this.LabelTdes2Encrypted);
             this.Controls.Add(this.TextBoxRsaPrivateKey);
             this.Controls.Add(this.TextBoxRsaPublicKey);
             this.Controls.Add(this.LabelDecryptedText);
             this.Controls.Add(this.LabelEncryptedText);
-            this.Controls.Add(this.LabelEncryptedTdesKeys);
+            this.Controls.Add(this.LabelTdes1Encrypted);
             this.Controls.Add(this.LabelTdesKey);
             this.Controls.Add(this.LabelPublicKeySlave);
             this.Controls.Add(this.label8);
@@ -274,7 +311,7 @@
             this.Controls.Add(this.button1);
             this.Name = "MasterForm";
             this.Text = "MasterForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MasterForm_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MasterForm_FormClosing);            
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,10 +335,13 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label LabelPublicKeySlave;
         private System.Windows.Forms.Label LabelTdesKey;
-        private System.Windows.Forms.Label LabelEncryptedTdesKeys;
+        private System.Windows.Forms.Label LabelTdes1Encrypted;
         private System.Windows.Forms.Label LabelEncryptedText;
         private System.Windows.Forms.Label LabelDecryptedText;
         private System.Windows.Forms.TextBox TextBoxRsaPublicKey;
         private System.Windows.Forms.TextBox TextBoxRsaPrivateKey;
+        private System.Windows.Forms.Label LabelTdes2Encrypted;
+        private System.Windows.Forms.Label LabelTdes3Encrypted;
+        private System.Windows.Forms.Button button7;
     }
 }

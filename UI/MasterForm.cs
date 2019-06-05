@@ -1,22 +1,17 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
-using System.IO;
-using System.Security;
-using System.Diagnostics;
 using BusinessProcess;
 namespace UI
 {
     public partial class MasterForm : Form
     {
 
-        private FlowProcess userWorkFlow;
+        private MasterWorkFlow userWorkFlow;
         OpenFileDialog fileBrowser;
         public MasterForm()
         {
             InitializeComponent();
-            this.userWorkFlow = new FlowProcess();
+            this.userWorkFlow = new MasterWorkFlow();
             fileBrowser = new OpenFileDialog();
             fileBrowser.Filter = "XML Files (*.xml)|*.xml";
             fileBrowser.FilterIndex = 0;
@@ -31,8 +26,7 @@ namespace UI
         private void Button2_Click(object sender, EventArgs e)
         {            
             if (fileBrowser.ShowDialog() == DialogResult.OK)
-            {
-                MessageBox.Show("Path is: " + fileBrowser.FileName);
+            {                
                 string publicKeyFromSlave=userWorkFlow.importRsaPublicKey(fileBrowser.FileName);                
                 this.LabelPublicKeySlave.Text = publicKeyFromSlave;
             }            
@@ -40,20 +34,58 @@ namespace UI
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            string[] RsaKeys=userWorkFlow.generateRSAKeys();
-            if (RsaKeys[0] == RsaKeys[1])
-            {
-                MessageBox.Show("They are the samee!!!!!");
-            }
+            string[] RsaKeys=userWorkFlow.generateRSAKeys();            
             this.TextBoxRsaPrivateKey.Text = RsaKeys[0];
             this.TextBoxRsaPublicKey.Text = RsaKeys[0];            
         }
 
         private void Button3_Click(object sender, EventArgs e)
-        {
-            this.userWorkFlow.generateTdesKeys();
-            string tdesKey=this.userWorkFlow.getTdesKey();
+        {    
+            string tdesKey= this.userWorkFlow.generateTdesKeys();            
             this.LabelTdesKey.Text = tdesKey;
         }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            string[] tdesEncryptedKeys = this.userWorkFlow.encryptTdesKeys();
+            LabelTdes1Encrypted.Text = tdesEncryptedKeys[0];
+            LabelTdes2Encrypted.Text = tdesEncryptedKeys[1];
+            LabelTdes3Encrypted.Text = tdesEncryptedKeys[2];
+        }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            if (fileBrowser.ShowDialog() == DialogResult.OK)
+            {
+                this.LabelEncryptedText.Text = this.userWorkFlow.importEncryptedMessage(fileBrowser.FileName);                
+            }            
+        }
+
+        private void Button7_Click(object sender, EventArgs e)
+        {
+            //Let's disable all the setting from the file selector
+            //So that, we can choose the path to export our file
+            fileBrowser.ValidateNames = false;
+            fileBrowser.CheckFileExists = false;
+            fileBrowser.CheckPathExists = true;            
+            fileBrowser.FileName = "tdesencriptado.xml";
+
+            if (fileBrowser.ShowDialog() == DialogResult.OK)
+            {
+                this.userWorkFlow.exportTdesKeysToXml(fileBrowser.FileName);                
+            }
+            
+            //Finally, let's able all the functionality again
+            fileBrowser.ValidateNames = true;
+            fileBrowser.CheckFileExists = true;                        
+            fileBrowser.FileName = "";
+        }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            LabelDecryptedText.Text = this.userWorkFlow.decryptMessage();
+        }
+
+       
     }
 }

@@ -22,16 +22,9 @@ namespace RSAEncrypter
             return this.CrytpServiceProvider.Encrypt(DataToEncrypt, false);            
         }
 
-        public byte[] Encrypt(String DataToEncrypt)
-        {
-            byte[] data = Encoding.ASCII.GetBytes(DataToEncrypt);
-            return this.CrytpServiceProvider.Encrypt(data, false);
-        }
-
-        public String Decrypt(byte[] DataToDecrypt)
+        public byte[] Decrypt(byte[] DataToDecrypt)
         {            
-            byte [] decrypedDataAsByteArray= this.CrytpServiceProvider.Decrypt(DataToDecrypt, false);
-            return Encoding.ASCII.GetString(decrypedDataAsByteArray);
+            return this.CrytpServiceProvider.Decrypt(DataToDecrypt, false);            
         }
 
         public string getPublicKey()
