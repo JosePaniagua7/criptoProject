@@ -56,7 +56,7 @@ namespace UI
         private void Button5_Click(object sender, EventArgs e)
         {
             if (fileBrowser.ShowDialog() == DialogResult.OK)
-            {
+            {                
                 this.LabelEncryptedText.Text = this.userWorkFlow.importEncryptedMessage(fileBrowser.FileName);                
             }            
         }
@@ -71,10 +71,9 @@ namespace UI
             fileBrowser.FileName = "tdesencriptado.xml";
 
             if (fileBrowser.ShowDialog() == DialogResult.OK)
-            {
+            {                
                 this.userWorkFlow.exportTdesKeysToXml(fileBrowser.FileName);                
-            }
-            
+            }            
             //Finally, let's able all the functionality again
             fileBrowser.ValidateNames = true;
             fileBrowser.CheckFileExists = true;                        

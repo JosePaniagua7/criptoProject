@@ -36,7 +36,7 @@ namespace BusinessProcess
 
         public string importRsaPublicKey(string route)
         {            
-            string publicKey=fileHandler.readRsaPublicKey(route);
+            string publicKey=fileHandler.readRsaPublicKey(route);            
             //After reading, lets set the key to the rsa
             this.RSAEnrcypter.setPublicKey(publicKey);
             return publicKey;
@@ -69,8 +69,10 @@ namespace BusinessProcess
         }
 
         public void exportTdesKeysToXml(string route)
-        {            
-            this.fileHandler.exportTdesKeys(route, this.TdesKeys);
+        {
+            byte[] initializationVector = this.TDESEncrypter.getInitializationVector();
+            String IVasHexa = ByteArrayToHexa(initializationVector);
+            this.fileHandler.exportTdesKeys(route, this.TdesKeys, IVasHexa);
         }
 
         public string importEncryptedMessage(string route)

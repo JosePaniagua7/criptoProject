@@ -37,7 +37,7 @@ namespace UI
             this.fileBrowser.ValidateNames = false;
             this.fileBrowser.CheckFileExists = false;
             this.fileBrowser.CheckPathExists = true;
-            this.fileBrowser.FileName = "cp_esclavo.xml.";
+            this.fileBrowser.FileName = "cp_esclavo.xml";
             if (fileBrowser.ShowDialog() == DialogResult.OK)
             {
                 this.userWorkFlow.exportRsaPublicKey(fileBrowser.FileName);                                

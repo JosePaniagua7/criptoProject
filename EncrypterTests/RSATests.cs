@@ -22,23 +22,6 @@ namespace EncrypterTests
                 Console.WriteLine("The public Key is " + publicKey);
             }         
             Assert.AreEqual(true, hasReturnedSomething);
-        }
-        [Test]
-        public void encryptTest()
-        {
-            RSA server = new RSA();
-            RSA client = new RSA();
-
-            String publicKey = server.getPublicKey();
-            client.setPublicKey(publicKey);
-
-            String data = "Hola Mundo";
-            byte [] encrytpedData=client.Encrypt(data);
-
-            String decryptedData = server.Decrypt(encrytpedData);
-
-            Assert.AreEqual(data,decryptedData);
-
-        }
+        }       
     }
 }

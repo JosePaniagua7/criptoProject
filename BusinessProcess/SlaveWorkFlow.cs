@@ -34,6 +34,12 @@ namespace BusinessProcess
         }
         public void exportRsaPublicKey(string route)
         {
+            string pk = this.RSAEnrcypter.getPublicKey();
+            Console.WriteLine("The key is: " + pk);
+            if (pk != this.rsaPublicKey)
+            {
+                Console.WriteLine("Cagadinha");
+            }
             this.fileHandler.exportRsaPublicKey(route, this.rsaPublicKey);
         }
 

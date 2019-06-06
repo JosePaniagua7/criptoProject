@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v2.1": {
       "ConsoleApp1/1.0.0": {
+        "dependencies": {
+          "DataHandlers": "1.0.0"
+        },
         "runtime": {
           "ConsoleApp1.dll": {}
+        }
+      },
+      "DataHandlers/1.0.0": {
+        "runtime": {
+          "DataHandlers.dll": {}
         }
       }
     }
   },
   "libraries": {
     "ConsoleApp1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DataHandlers/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

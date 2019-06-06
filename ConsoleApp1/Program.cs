@@ -1,5 +1,5 @@
-﻿using System;
-using System.Xml;
+﻿using DataHandlers;
+using System;
 
 namespace ConsoleApp1
 {
@@ -7,15 +7,9 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            XmlDocument document = new XmlDocument();
-            string route = "C:\\Users\\jose.paniagua\\Desktop\\myFile.xml";
-
-            document.Load(route);
-            XmlNodeList elemList = document.GetElementsByTagName("clavepublica");
-            for (int i = 0; i < elemList.Count; i++)
-            {
-                Console.WriteLine(elemList[i].InnerXml);
-            }            
+            XMLHandler fileHandler = new XMLHandler();
+            string publicKey = fileHandler.readRsaPublicKey("C:\\Users\\jose.paniagua\\Desktop\\cp_esclavo.xml");
+            Console.WriteLine("The public key is: " + publicKey);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace RSAEncrypter
         private RSACryptoServiceProvider CrytpServiceProvider;
         public RSA()
         {
-            this.CrytpServiceProvider = new RSACryptoServiceProvider();
+            this.CrytpServiceProvider = new RSACryptoServiceProvider(512);
         }
 
         public byte[] Encrypt(byte[] DataToEncrypt)
@@ -38,10 +38,8 @@ namespace RSAEncrypter
 
         public void setPublicKey(String publicKey)
         {
-            this.CrytpServiceProvider.FromXmlString(publicKey);
+            Console.WriteLine("The receivedKey is: " + publicKey);
+           this.CrytpServiceProvider.FromXmlString(publicKey);
         }
-
-
-
     }
 }

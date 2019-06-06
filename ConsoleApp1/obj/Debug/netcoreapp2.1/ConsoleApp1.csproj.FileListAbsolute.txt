@@ -9,3 +9,6 @@ C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\ConsoleApp1\obj\Debug\net
 C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\ConsoleApp1\obj\Debug\netcoreapp2.1\ConsoleApp1.dll
 C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\ConsoleApp1\obj\Debug\netcoreapp2.1\ConsoleApp1.pdb
 C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\ConsoleApp1\obj\Debug\netcoreapp2.1\ConsoleApp1.csprojAssemblyReference.cache
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\ConsoleApp1\bin\Debug\netcoreapp2.1\DataHandlers.dll
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\ConsoleApp1\bin\Debug\netcoreapp2.1\DataHandlers.pdb
+C:\Users\jose.paniagua\source\repos\FinalProjectCrypto\ConsoleApp1\obj\Debug\netcoreapp2.1\ConsoleApp1.csproj.CopyComplete
