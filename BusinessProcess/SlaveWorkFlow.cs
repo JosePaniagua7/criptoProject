@@ -47,17 +47,23 @@ namespace BusinessProcess
         {
             string[] encryptedTdesKeys = this.fileHandler.readTdesKeys(route);
             byte[][] decrytpedTdesKeys = new byte[3][];
-            
+            byte[] encrytpedKeyAsByteArray = new byte[8];
+
             for (int i=0;i< encryptedTdesKeys.Length; i++)
-            {
-                byte[] encrytpedKeyAsByteArray = new byte[8];
+            {                
                 encrytpedKeyAsByteArray = HexaToByteArray(encryptedTdesKeys[i]);
                 decrytpedTdesKeys[i] = this.RSAEnrcypter.Decrypt(encrytpedKeyAsByteArray);
             }
             this.TDESEncrypter.setKeys(decrytpedTdesKeys[0], decrytpedTdesKeys[1], decrytpedTdesKeys[2]);
-
             return encryptedTdesKeys;
         }
+        public void importInitializationVector(string route)
+        {
+            string initializatoinVector=this.fileHandler.readInitializationVector(route);
+            byte[] initializationVectorDecrypted = this.RSAEnrcypter.Decrypt(HexaToByteArray(initializatoinVector));
+            this.TDESEncrypter.setInitializationVector(initializationVectorDecrypted);
+        }
+
 
         public string decryptTdesKey()
         {

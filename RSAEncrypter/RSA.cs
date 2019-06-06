@@ -23,7 +23,7 @@ namespace RSAEncrypter
         }
 
         public byte[] Decrypt(byte[] DataToDecrypt)
-        {            
+        {
             return this.CrytpServiceProvider.Decrypt(DataToDecrypt, false);            
         }
 

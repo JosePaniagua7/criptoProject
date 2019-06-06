@@ -71,7 +71,8 @@ namespace BusinessProcess
         public void exportTdesKeysToXml(string route)
         {
             byte[] initializationVector = this.TDESEncrypter.getInitializationVector();
-            String IVasHexa = ByteArrayToHexa(initializationVector);
+            byte[] IVEncrypted = this.RSAEnrcypter.Encrypt(initializationVector);
+            String IVasHexa = ByteArrayToHexa(IVEncrypted);
             this.fileHandler.exportTdesKeys(route, this.TdesKeys, IVasHexa);
         }
 
@@ -85,7 +86,7 @@ namespace BusinessProcess
         {
             byte[] encryptedMessageAsByteArray = HexaToByteArray(this.message);
             byte[] decryptedMessageAsByteArray = this.TDESEncrypter.Decrypt(encryptedMessageAsByteArray);
-            return ByteArrayToHexa(decryptedMessageAsByteArray);
+            return new ASCIIEncoding().GetString(decryptedMessageAsByteArray);
         }
         public string ByteArrayToHexa(byte[] data)
         {

@@ -18,6 +18,7 @@ namespace TDESEncrypter
             this.rnd = new Random();
             this.key = new byte[24];
             this.initializationVector = new byte[8];
+            this.ecrypterServiceProvider = new TripleDESCryptoServiceProvider();
         }
         public byte[] generateKey()
         {
@@ -48,14 +49,7 @@ namespace TDESEncrypter
             keys[0] = this.key.Take(8).ToArray();
             keys[1] = this.key.Skip(8).Take(8).ToArray();
             keys[2] = this.key.Skip(16).Take(8).ToArray();
-            for (int i = 0; i < keys.Length; i++)
-            {
-                for (int j = 0; j < keys[i].Length; j++)
-                {
-                    Console.Write(keys[i][j] + ",");
-                }
-                Console.WriteLine();
-            }
+            
             return keys;
         }
 
@@ -71,6 +65,11 @@ namespace TDESEncrypter
         public byte[] getInitializationVector()
         {
             return this.initializationVector;
+        }
+
+        public void setInitializationVector(byte [] iv)
+        {
+            this.initializationVector = iv;
         }
 
         public byte[] Encrypt(string Data)
@@ -112,6 +111,20 @@ namespace TDESEncrypter
 
         public byte[] Decrypt(byte[] Data)
         {
+            Console.WriteLine("Decryption");
+            Console.WriteLine("Key:");
+            for (int i = 0; i < this.key.Length; i++)
+            {
+                Console.Write(this.key[i] + ",");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Initializtion Vector:");
+            for (int i = 0; i < this.initializationVector.Length; i++)
+            {
+                Console.WriteLine("Entra aca:");
+                Console.Write(this.key[i] + ",");
+            }
+            Console.WriteLine("Fin Decryption");
             try
             {
                 // Create a new MemoryStream using the passed 

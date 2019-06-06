@@ -13,26 +13,24 @@ namespace DataHandlers
         }
 
         public String [] readTdesKeys(String route)
-        {
-            Console.WriteLine("The received Path during reading tdes: " + route);
+        {         
             String[] keys = new String[3];
             this.xmlDocumentReader.Load(route);
             //Iterate three times over the keys, that allow scalable alrogithms
             for (int i = 0; i < keys.Length; i++)
             {
-                XmlNode key = xmlDocumentReader.DocumentElement.SelectSingleNode("/tdes"+(i+1));
-                if (key!=null)
-                {
-                    Console.WriteLine("El valor es: " + key.InnerText);
-                    //keys[i] = key.InnerText;
-                }
-                else
-                {
-                    Console.WriteLine("Huston, tenemos un problema");
-                }
-
+                XmlNode key = xmlDocumentReader.DocumentElement.SelectSingleNode("tdes"+(i+1));                
+                keys[i] = key.InnerText;                
             }
             return keys;
+        }
+        public string readInitializationVector(String route)
+        {            
+            string initializationVector="";
+            this.xmlDocumentReader.Load(route);
+            XmlNode iv = xmlDocumentReader.DocumentElement.SelectSingleNode("iv");
+            initializationVector = iv.InnerText;
+            return initializationVector;           
         }
         public string readRsaPublicKey(string route)
         {            
@@ -47,8 +45,7 @@ namespace DataHandlers
         }
 
         public void exportTdesKeys(string route,string [] keys,string initializationVector)
-        {
-            Console.WriteLine("The received Path during tdes exporting: " + route);
+        {            
             this.xmlTextWritter = new XmlTextWriter(route, null);
             // Opens the document  
             xmlTextWritter.WriteStartDocument();
@@ -68,8 +65,7 @@ namespace DataHandlers
         }
 
         public void exportRsaPublicKey(string route, String key)
-        {
-            Console.WriteLine("The received Path during exporting rsa: " + route);
+        {            
             this.xmlTextWritter = new XmlTextWriter(route, null);
             // Opens the document  
             xmlTextWritter.WriteStartDocument();
@@ -84,14 +80,12 @@ namespace DataHandlers
         }
 
         public string readEncryptedText(string route)
-        {
-            Console.WriteLine("The received Path during reading encrypted text: " + route);
+        {            
             return this.readNode(route, "textoe");            
         }
 
         public void exportEncrytpedText(string route,string message)
-        {
-            Console.WriteLine("The received Path during exporting encrypted text: " + route);
+        {            
             this.xmlTextWritter = new XmlTextWriter(route, null);
             // Opens the document  
             xmlTextWritter.WriteStartDocument();

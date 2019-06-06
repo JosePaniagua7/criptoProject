@@ -53,10 +53,11 @@ namespace UI
             
             if (fileBrowser.ShowDialog() == DialogResult.OK)
             {
-                string [] tdesKeys=this.userWorkFlow.importTdesKeys(fileBrowser.FileName);
+                string [] tdesKeys=this.userWorkFlow.importTdesKeys(fileBrowser.FileName);                
                 this.LabelEncryptedTdes1.Text = tdesKeys[0];
                 this.LabelEncryptedTdes2.Text = tdesKeys[1];
                 this.LabelEncryptedTdes3.Text = tdesKeys[2];
+                this.userWorkFlow.importInitializationVector(fileBrowser.FileName);                                  
             }
             
         }
