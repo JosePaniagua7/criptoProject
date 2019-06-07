@@ -59,8 +59,9 @@ namespace BusinessProcess
         }
         public void importInitializationVector(string route)
         {
-            string initializatoinVector=this.fileHandler.readInitializationVector(route);
-            byte[] initializationVectorDecrypted = this.RSAEnrcypter.Decrypt(HexaToByteArray(initializatoinVector));
+            string initializationVector=this.fileHandler.readInitializationVector(route);
+            byte[] initializationVectorAsByteArray = HexaToByteArray(initializationVector);
+            byte[] initializationVectorDecrypted = this.RSAEnrcypter.Decrypt(initializationVectorAsByteArray);
             this.TDESEncrypter.setInitializationVector(initializationVectorDecrypted);
         }
 

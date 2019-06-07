@@ -89,11 +89,11 @@ namespace DataHandlers
             this.xmlTextWritter = new XmlTextWriter(route, null);
             // Opens the document  
             xmlTextWritter.WriteStartDocument();
-
+            xmlTextWritter.WriteStartElement("root");
             xmlTextWritter.WriteStartElement("textoe");
             xmlTextWritter.WriteString(message);
             xmlTextWritter.WriteEndElement();
-
+            xmlTextWritter.WriteEndElement();
             xmlTextWritter.WriteEndDocument();            
             xmlTextWritter.Close();
         }
@@ -103,7 +103,7 @@ namespace DataHandlers
             this.xmlDocumentReader.Load(route);
             String nodeValue="";
 
-            XmlNode node = xmlDocumentReader.DocumentElement.SelectSingleNode("/" + nodeName);
+            XmlNode node = xmlDocumentReader.DocumentElement.SelectSingleNode(nodeName);
             if (node != null) {
                 nodeValue = node.InnerText;
             }                        

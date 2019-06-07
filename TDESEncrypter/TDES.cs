@@ -110,21 +110,7 @@ namespace TDESEncrypter
         }
 
         public byte[] Decrypt(byte[] Data)
-        {
-            Console.WriteLine("Decryption");
-            Console.WriteLine("Key:");
-            for (int i = 0; i < this.key.Length; i++)
-            {
-                Console.Write(this.key[i] + ",");
-            }
-            Console.WriteLine();
-            Console.WriteLine("Initializtion Vector:");
-            for (int i = 0; i < this.initializationVector.Length; i++)
-            {
-                Console.WriteLine("Entra aca:");
-                Console.Write(this.key[i] + ",");
-            }
-            Console.WriteLine("Fin Decryption");
+        {            
             try
             {
                 // Create a new MemoryStream using the passed 

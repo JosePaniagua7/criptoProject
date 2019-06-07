@@ -19,12 +19,12 @@ namespace RSAEncrypter
 
         public byte[] Encrypt(byte[] DataToEncrypt)
         {
-            return this.CrytpServiceProvider.Encrypt(DataToEncrypt, false);            
+            return this.CrytpServiceProvider.Encrypt(DataToEncrypt, true);            
         }
 
         public byte[] Decrypt(byte[] DataToDecrypt)
         {
-            return this.CrytpServiceProvider.Decrypt(DataToDecrypt, false);            
+            return this.CrytpServiceProvider.Decrypt(DataToDecrypt, true);            
         }
 
         public string getPublicKey()
@@ -37,8 +37,7 @@ namespace RSAEncrypter
         }
 
         public void setPublicKey(String publicKey)
-        {
-            Console.WriteLine("The receivedKey is: " + publicKey);
+        {            
            this.CrytpServiceProvider.FromXmlString(publicKey);
         }
     }
