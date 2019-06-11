@@ -15,87 +15,70 @@ namespace DataHandlers
         public String [] readTdesKeys(String route)
         {         
             String[] keys = new String[3];
-            this.xmlDocumentReader.Load(route);
-            //Iterate three times over the keys, that allow scalable alrogithms
+            this.xmlDocumentReader.Load(route);            
             for (int i = 0; i < keys.Length; i++)
-            {
-                XmlNode key = xmlDocumentReader.DocumentElement.SelectSingleNode("tdes"+(i+1));                
-                keys[i] = key.InnerText;                
+            {                
+                keys[i] = readNode(this.xmlDocumentReader,"tdes" + (i + 1));
             }
             return keys;
         }
         public string readInitializationVector(String route)
-        {            
-            string initializationVector="";
-            this.xmlDocumentReader.Load(route);
-            XmlNode iv = xmlDocumentReader.DocumentElement.SelectSingleNode("iv");
-            initializationVector = iv.InnerText;
-            return initializationVector;           
+        {                       
+            return readNode(route,"iv");           
         }
         public string readRsaPublicKey(string route)
-        {            
-            string publicRsaKey = "";
-            this.xmlDocumentReader.Load(route);
-            XmlNodeList elemList = this.xmlDocumentReader.GetElementsByTagName("clavepublica");
-            if (elemList.Count > 0)
-            {
-                publicRsaKey = elemList[0].InnerText;
-            }
-            return publicRsaKey;
+        {                        
+            return readNode(route,"clavepublica");            
+        }
+        public string readEncryptedText(string route)
+        {
+            return this.readNode(route,"textoe");
         }
 
         public void exportTdesKeys(string route,string [] keys,string initializationVector)
-        {            
-            this.xmlTextWritter = new XmlTextWriter(route, null);            
-            xmlTextWritter.WriteStartDocument();
-            xmlTextWritter.WriteStartElement("root");
+        {
+            initializeXml(route);
             for(int i = 0; i < keys.Length; i++)
             {
                 writeNode(this.xmlTextWritter, "tdes" + (i+1), keys[i]);
             }
             writeNode(this.xmlTextWritter,"iv", initializationVector);
-            xmlTextWritter.WriteEndElement();
-            xmlTextWritter.WriteEndDocument();
-            xmlTextWritter.Close();
+            finalizeXml();
         }
 
         public void exportRsaPublicKey(string route, String key)
-        {            
-            this.xmlTextWritter = new XmlTextWriter(route, null);            
-            xmlTextWritter.WriteStartDocument();
-            xmlTextWritter.WriteStartElement("root");
-            writeNode(this.xmlTextWritter, "clavepublica", key);            
-            xmlTextWritter.WriteEndElement();
-            xmlTextWritter.WriteEndDocument();            
-            xmlTextWritter.Close();
-        }
-
-        public string readEncryptedText(string route)
-        {            
-            return this.readNode(route, "textoe");            
-        }
+        {
+            initializeXml(route);
+            writeNode(this.xmlTextWritter, "clavepublica", key);
+            finalizeXml();
+        }        
 
         public void exportEncrytpedText(string route,string message)
-        {            
-            this.xmlTextWritter = new XmlTextWriter(route, null);
-            // Opens the document  
-            xmlTextWritter.WriteStartDocument();
-            xmlTextWritter.WriteStartElement("root");
-            writeNode(this.xmlTextWritter, "textoe", message);            
-            xmlTextWritter.WriteEndElement();
-            xmlTextWritter.WriteEndDocument();            
-            xmlTextWritter.Close();
+        {
+            initializeXml(route);
+            writeNode(this.xmlTextWritter, "textoe", message);
+            finalizeXml();
         }
 
         public string readNode(string route,string nodeName)
-        {            
+        {
             this.xmlDocumentReader.Load(route);
-            String nodeValue="";
-
-            XmlNode node = xmlDocumentReader.DocumentElement.SelectSingleNode(nodeName);
+            string nodeValue="";
+            XmlNode node = this.xmlDocumentReader.DocumentElement.SelectSingleNode(nodeName);
             if (node != null) {
                 nodeValue = node.InnerText;
             }                        
+            return nodeValue;
+        }
+
+        public string readNode(XmlDocument xmlDocument,string nodeName)
+        {
+            string nodeValue = "";
+            XmlNode node = xmlDocument.DocumentElement.SelectSingleNode(nodeName);
+            if (node != null)
+            {
+                nodeValue = node.InnerText;
+            }
             return nodeValue;
         }
 
