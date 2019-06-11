@@ -46,36 +46,27 @@ namespace DataHandlers
 
         public void exportTdesKeys(string route,string [] keys,string initializationVector)
         {            
-            this.xmlTextWritter = new XmlTextWriter(route, null);
-            // Opens the document  
+            this.xmlTextWritter = new XmlTextWriter(route, null);            
             xmlTextWritter.WriteStartDocument();
             xmlTextWritter.WriteStartElement("root");
-            for (int i = 0; i < keys.Length; i++)
+            for(int i = 0; i < keys.Length; i++)
             {
-                xmlTextWritter.WriteStartElement("tdes" + (i + 1));
-                xmlTextWritter.WriteString(keys[i]);
-                xmlTextWritter.WriteEndElement();
+                writeNode(this.xmlTextWritter, "tdes" + (i+1), keys[i]);
             }
-            xmlTextWritter.WriteStartElement("iv");
-            xmlTextWritter.WriteString(initializationVector);
+            writeNode(this.xmlTextWritter,"iv", initializationVector);
             xmlTextWritter.WriteEndElement();
-            xmlTextWritter.WriteEndElement();
-            xmlTextWritter.WriteEndDocument();            
+            xmlTextWritter.WriteEndDocument();
             xmlTextWritter.Close();
         }
 
         public void exportRsaPublicKey(string route, String key)
         {            
-            this.xmlTextWritter = new XmlTextWriter(route, null);
-            // Opens the document  
+            this.xmlTextWritter = new XmlTextWriter(route, null);            
             xmlTextWritter.WriteStartDocument();
             xmlTextWritter.WriteStartElement("root");
-            xmlTextWritter.WriteStartElement("clavepublica");
-            xmlTextWritter.WriteString(key);
+            writeNode(this.xmlTextWritter, "clavepublica", key);            
             xmlTextWritter.WriteEndElement();
-            xmlTextWritter.WriteEndElement();
-            xmlTextWritter.WriteEndDocument();
-            // close writer  
+            xmlTextWritter.WriteEndDocument();            
             xmlTextWritter.Close();
         }
 
@@ -90,9 +81,7 @@ namespace DataHandlers
             // Opens the document  
             xmlTextWritter.WriteStartDocument();
             xmlTextWritter.WriteStartElement("root");
-            xmlTextWritter.WriteStartElement("textoe");
-            xmlTextWritter.WriteString(message);
-            xmlTextWritter.WriteEndElement();
+            writeNode(this.xmlTextWritter, "textoe", message);            
             xmlTextWritter.WriteEndElement();
             xmlTextWritter.WriteEndDocument();            
             xmlTextWritter.Close();
@@ -109,6 +98,26 @@ namespace DataHandlers
             }                        
             return nodeValue;
         }
-        
+
+        public void initializeXml(string route)
+        {
+            this.xmlTextWritter = new XmlTextWriter(route, null);
+            this.xmlTextWritter.WriteStartDocument();
+            this.xmlTextWritter.WriteStartElement("root");           
+        }
+
+        public void finalizeXml() {
+            this.xmlTextWritter.WriteEndElement();
+            this.xmlTextWritter.WriteEndDocument();
+            this.xmlTextWritter.Close();
+        }
+
+        public void writeNode(XmlTextWriter xmlFile, string nodeName,string nodeValue)
+        {
+            xmlFile.WriteStartElement(nodeName);
+            xmlTextWritter.WriteString(nodeValue);
+            xmlTextWritter.WriteEndElement();
+        }
+
     }
 }
