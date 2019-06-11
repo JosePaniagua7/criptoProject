@@ -67,7 +67,8 @@ namespace DataHandlers
             XmlNode node = this.xmlDocumentReader.DocumentElement.SelectSingleNode(nodeName);
             if (node != null) {
                 nodeValue = node.InnerText;
-            }                        
+            }
+            Console.WriteLine("Here is: " + nodeValue);
             return nodeValue;
         }
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<!--Tengo Miedo!-->
+<!--myXmlFile.xml in root dir-->
+<root>
+ <tdes1>Hi</tdes1>
+ <tdes2>Good</tdes2>
+ <tdes3>Moorning</tdes3>
+ <iv>Hello</iv>
+</root>
