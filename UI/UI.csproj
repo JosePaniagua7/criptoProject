@@ -80,6 +80,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SlaveForm.resx">
       <DependentUpon>SlaveForm.cs</DependentUpon>
@@ -102,6 +103,24 @@
       <Project>{b2d18bea-fada-4631-ae6d-a3c0c13b3bb9}</Project>
       <Name>BusinessProcess</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slaveIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\master.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\master1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\master2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slave.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

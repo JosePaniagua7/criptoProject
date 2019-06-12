@@ -35,5 +35,14 @@ namespace UI
         {
             Application.Exit();
         }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SlaveForm formAsSlave = new SlaveForm();
+            formAsSlave.Show();
+            MasterForm formAsMaster = new MasterForm();
+            formAsMaster.Show();
+        }
     }
 }
