@@ -40,7 +40,9 @@ namespace UI
             this.fileBrowser.FileName = "cp_esclavo.xml";
             if (fileBrowser.ShowDialog() == DialogResult.OK)
             {
-                this.userWorkFlow.exportRsaPublicKey(fileBrowser.FileName);                                
+                this.userWorkFlow.exportRsaPublicKey(fileBrowser.FileName);
+                this.button3.Enabled = true;
+                this.button3.Focus();
             }
             this.fileBrowser.ValidateNames = true;
             this.fileBrowser.CheckFileExists = true;
@@ -57,7 +59,9 @@ namespace UI
                 this.LabelEncryptedTdes1.Text = tdesKeys[0];
                 this.LabelEncryptedTdes2.Text = tdesKeys[1];
                 this.LabelEncryptedTdes3.Text = tdesKeys[2];
-                this.userWorkFlow.importInitializationVector(fileBrowser.FileName);                                  
+                this.userWorkFlow.importInitializationVector(fileBrowser.FileName);
+                this.button4.Enabled = true;
+                this.button4.Focus();
             }
             
         }
@@ -67,17 +71,30 @@ namespace UI
             string[] rsaKeys = this.userWorkFlow.generateRSAKeys();
             this.TextBoxRsaPrivateKey.Text = rsaKeys[0];
             this.TextBoxRsaPublicKey.Text = rsaKeys[1];
+            this.button2.Enabled = true;
+            this.button2.Focus();
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
             this.LabelDecryptedText.Text = this.userWorkFlow.decryptTdesKey();
+            this.button5.Enabled = true;
+            this.button5.Focus();
         }
 
         private void Button5_Click(object sender, EventArgs e)
-        {   
-            string encrytpedText= this.userWorkFlow.encryptMessage(this.MessageTextBox.Text);
-            this.LabelEncryptedText.Text = encrytpedText;
+        {
+            string text = this.MessageTextBox.Text;
+            if (text.Trim().Length>0)
+            {
+                string encrytpedText = this.userWorkFlow.encryptMessage(this.MessageTextBox.Text);
+                this.LabelEncryptedText.Text = encrytpedText;
+                this.button6.Enabled = true;
+                this.button6.Focus();
+            }else {
+                MessageBox.Show("There is no text to encrypt");
+            }
+            
         }
 
         private void Button6_Click(object sender, EventArgs e)
@@ -94,6 +111,11 @@ namespace UI
             this.fileBrowser.CheckFileExists = true;
             this.fileBrowser.CheckPathExists = true;
             this.fileBrowser.FileName = "";
+        }
+
+        private void SlaveForm_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("Bienvenido Esclavo, los botones se iran desbloqueando a medida que avances en el proceso");
         }
     }
 }

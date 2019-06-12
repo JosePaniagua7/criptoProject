@@ -29,6 +29,8 @@ namespace UI
             {                
                 string publicKeyFromSlave=userWorkFlow.importRsaPublicKey(fileBrowser.FileName);                
                 this.LabelPublicKeySlave.Text = publicKeyFromSlave;
+                this.button3.Enabled = true;
+                this.button3.Focus();
             }            
         }
 
@@ -36,13 +38,17 @@ namespace UI
         {
             string[] RsaKeys=userWorkFlow.generateRSAKeys();            
             this.TextBoxRsaPrivateKey.Text = RsaKeys[0];
-            this.TextBoxRsaPublicKey.Text = RsaKeys[0];            
+            this.TextBoxRsaPublicKey.Text = RsaKeys[0];
+            this.button2.Enabled = true;
+            this.button2.Focus();
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {    
             string tdesKey= this.userWorkFlow.generateTdesKeys();            
             this.LabelTdesKey.Text = tdesKey;
+            this.button4.Enabled = true;
+            this.button4.Focus();
         }
 
         private void Button4_Click(object sender, EventArgs e)
@@ -51,13 +57,17 @@ namespace UI
             LabelTdes1Encrypted.Text = tdesEncryptedKeys[0];
             LabelTdes2Encrypted.Text = tdesEncryptedKeys[1];
             LabelTdes3Encrypted.Text = tdesEncryptedKeys[2];
+            this.button7.Enabled = true;
+            this.button7.Focus();
         }
 
         private void Button5_Click(object sender, EventArgs e)
         {
             if (fileBrowser.ShowDialog() == DialogResult.OK)
             {                
-                this.LabelEncryptedText.Text = this.userWorkFlow.importEncryptedMessage(fileBrowser.FileName);                
+                this.LabelEncryptedText.Text = this.userWorkFlow.importEncryptedMessage(fileBrowser.FileName);
+                this.button6.Enabled = true;
+                this.button6.Focus();
             }            
         }
 
@@ -72,7 +82,9 @@ namespace UI
 
             if (fileBrowser.ShowDialog() == DialogResult.OK)
             {                
-                this.userWorkFlow.exportTdesKeysToXml(fileBrowser.FileName);                
+                this.userWorkFlow.exportTdesKeysToXml(fileBrowser.FileName);
+                this.button5.Enabled = true;
+                this.button5.Focus();
             }            
             //Finally, let's able all the functionality again
             fileBrowser.ValidateNames = true;
@@ -82,9 +94,12 @@ namespace UI
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            LabelDecryptedText.Text = this.userWorkFlow.decryptMessage();
+            LabelDecryptedText.Text = this.userWorkFlow.decryptMessage();            
         }
 
-       
+        private void MasterForm_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("Bienvenido Maestro, los botones se iran desbloqueando a medida que avances en el proceso");
+        }
     }
 }
